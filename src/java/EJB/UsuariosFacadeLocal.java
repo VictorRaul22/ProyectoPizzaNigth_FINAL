@@ -9,10 +9,6 @@ import Modelo.Usuarios;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * @author VICTOR
- */
 @Local
 public interface UsuariosFacadeLocal {
 
@@ -29,5 +25,6 @@ public interface UsuariosFacadeLocal {
     List<Usuarios> findRange(int[] range);
 
     int count();
-    
+
+    Usuarios iniciarsesion(Usuarios u);
 }

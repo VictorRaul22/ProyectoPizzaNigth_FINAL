@@ -6,14 +6,13 @@
 package EJB;
 
 import Modelo.Usuarios;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-/**
- *
- * @author VICTOR
- */
+
 @Stateless
 public class UsuariosFacade extends AbstractFacade<Usuarios> implements UsuariosFacadeLocal {
 
@@ -28,5 +27,23 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
     public UsuariosFacade() {
         super(Usuarios.class);
     }
-    
+
+    @Override
+    public Usuarios iniciarsesion(Usuarios u) {
+        Usuarios usuario = null;
+        String sql;
+        try {
+            sql = "SELECT u FROM usuarios u WHERE u.email = ?1 and u.password = ?2";
+            Query query = em.createQuery(sql);
+            query.setParameter(1, u.getEmail());
+            query.setParameter(2, u.getPassword());
+            List<Usuarios> lista = query.getResultList();
+            if (!lista.isEmpty()) {
+                usuario = lista.get(0);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return usuario;
+    }
 }
