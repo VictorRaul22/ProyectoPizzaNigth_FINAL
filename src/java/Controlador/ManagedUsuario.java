@@ -148,21 +148,15 @@ public class ManagedUsuario implements Serializable {
     }
     public String iniciarsesion() {
         Usuarios u;
-        String redireccion = null;
+        String redireccion ="/SINPERMISOS?faces-redirect=true";
         try {
             u = usuarioFacade.iniciarsesion(usuario);
             if (u != null) {
-                if (u.getIdRol().equals("R0001")) {
-                    redireccion = "templatefooter";
-                } else {
-                    redireccion = "templatefooter";
-                }
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "Credenciales inválidas"));
+                redireccion="/index?faces-redirect=true";
             }
 
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "AVISO", "ERROR"));
+            System.out.println(e.getMessage());
         }
         return redireccion;
     }

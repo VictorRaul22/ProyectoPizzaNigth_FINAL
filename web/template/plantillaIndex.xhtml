@@ -41,7 +41,7 @@
                         </div>
 
                         <c:choose>
-                            <c:when test="#{managedUsuario.usuario.idUser.equalsIgnoreCase('R001')}">
+                           <c:when test="#{managedUsuario.usuario.idUser.equalsIgnoreCase('R001')}">
                                 <div class="nav-text3">
                                     <h:link id="link" value="Configuración de la Página"></h:link>
                                 </div>
@@ -60,7 +60,7 @@
                         <c:when test="#{managedUsuario.usuario.idUser==null}">
                             <div class="nav-log-in">
                                 <h:link>
-                                    <h:commandButton class="btn btn-primary" value="login"></h:commandButton>
+                                    <h:commandButton class="btn btn-primary" action="/login?faces_redirect=true" value="login"></h:commandButton>
                                 </h:link>
                             </div>
                         </c:when>

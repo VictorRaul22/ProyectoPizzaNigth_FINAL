@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Varela Round", sans-serif;
+  background-color: #009c9c;
+  background-image: linear-gradient(177deg, #009c9c 0%, #8a8a8a 100%);
+}
+
+.nav-var {
+  display: flex;
+  justify-content: space-between;
+  background-color: #67677a94;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.log-area {
+  display: flex;
+  flex: 1;
+}
+
+.img-logo {
+  max-width: 50%;
+}
+
+.log-area a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem 1rem 0rem 1rem;
+  flex: 10;
+  align-items: center;
+}
+
+.nav-text1 {
+  margin: 0rem 1rem;
+}
+
+.nav-text2 {
+  margin: 0rem 1rem;
+}
+
+.nav-text3 {
+  margin: 0rem 1rem;
+}
+
+.nav-text4 {
+  margin: 0rem 1rem;
+}
+
+.nav-log-in {
+  flex: 1;
+}
+.prest-area {
+  display: flex;
+}
+.prest-text-area {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  margin-right: 4rem;
+}
+.panel-info {
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.1rem;
+}
+.prest-img-area {
+  display: flex;
+  flex: 2;
+}
+.prest-img-area img {
+  max-width: 100%;
+}
+
+.panel-present {
+  display: flex;
+  padding: 1rem;
+  background-color: #2f2f2d;
+  background-image: linear-gradient(62deg, #2f2f2d1a 0%, #6d5621 100%);
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+  border-radius: 0.2rem;
+}
+/*formulario*/
+* {
+  box-sizing: border-box;
+}
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+input[type="submit"] {
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: #3635358e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 80%;
+}
+input[type="submit"]:hover {
+  background-color: #0d6efd;
+}
+.container-form {
+  margin: 1rem;
+  border-radius: 5px;
+  background-color: #8bc5eca4;
+  background-image: linear-gradient(135deg, #8bc5ec9d 0%, #9599e291 100%);
+
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/*fotoer*/
+.footer {
+  padding: 2rem 0rem 2rem 0rem;
+  margin-top: 1rem;
+  color: white;
+  background-color: #0f0e3e2f;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.footer_2 {
+  flex: 1;
+}
+
+.footer_3 {
+  flex: 1;
+}
+
+.footer_4 {
+  flex: 1;
+}
+
+.footer_1 img {
+  max-width: 50%;
+}
+
+.footer_2t {
+  font-size: 1.3rem;
+}
+
+.footer_3t {
+  font-size: 1.3rem;
+}
+
+.footer_4t {
+  font-size: 1.3rem;
+}
+
+.navbar-brand {
+  color: rgb(255, 255, 255);
+}
+
+#link {
+  text-decoration: none;
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  .nav-var {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 20%;
+    font-size: 0.8rem;
+  }
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nav-log-in {
+    margin: auto;
+  }
+  .log-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .log-area a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50%;
+  }
+  /**/
+  .prest-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+/*boton flotante*/
+.btn-whatsapp {
+  display: block;
+  max-width: 30%;
+  max-height: 30%;
+  color: #fff;
+  position: fixed;
+  right: 30px;
+  bottom: 60px;
+  border-radius: 50%;
+  line-height: 80px;
+  text-align: center;
+  z-index: 999;
+}

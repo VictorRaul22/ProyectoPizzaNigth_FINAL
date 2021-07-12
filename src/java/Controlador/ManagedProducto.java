@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import EJB.CategoriaFacadeLocal;
@@ -18,7 +13,6 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -29,12 +23,7 @@ import org.primefaces.model.UploadedFile;
 @ManagedBean
 @SessionScoped
 public class ManagedProducto implements Serializable {
-    
-    /*
-    ===========================================================================
-    ================================ ATRIBUTOS ================================
-    ===========================================================================
-    */
+
     @EJB
     private ProductoFacadeLocal productoFacade;
     @EJB
@@ -44,10 +33,11 @@ public class ManagedProducto implements Serializable {
     private Categoria categoria;
     private String nombreArchivo;
     private String ruta = "C:\\Users\\VICTOR\\Documents\\CICLO7\\DESARROLLO WEB INTEGRADO\\java\\ProyectoPizzaNigth_FINAL\\web\\Administrador\\Producto\\imagenes";
-    public ManagedProducto(){
-        
+
+    public ManagedProducto() {
+
     }
-    
+
     public Producto getProducto() {
         return producto;
     }
@@ -57,10 +47,10 @@ public class ManagedProducto implements Serializable {
     }
 
     public List<Producto> getListProduc() {
-        
+
         this.listProduc = productoFacade.findAll();
-        for(int i=0;i< this.listProduc.size();i++){
-            producto=this.listProduc.get(i);
+        for (int i = 0; i < this.listProduc.size(); i++) {
+            producto = this.listProduc.get(i);
             producto.setIdCategoria(this.cateogoriaFacade.find(this.listProduc.get(i).getIdCategoria().getIdCategoria()));
             this.listProduc.set(i, producto);
         }
@@ -79,27 +69,12 @@ public class ManagedProducto implements Serializable {
         this.categoria = categoria;
     }
 
-    
-    
-    /*
-    ===========================================================================
-    ================================ CONSTRUCTOR ==============================
-    ===========================================================================
-    */
     @PostConstruct
     public void init() {
         this.producto = new Producto();
         this.categoria = new Categoria();
     }
 
-    
-    
-    
-    /*
-    ===========================================================================
-    ================================= METODOS =================================
-    ===========================================================================
-    */
     public void cargarCopiarImagen(FileUploadEvent event) {
         byte[] bytes = new byte[1024];
         int read = 0;
@@ -122,6 +97,7 @@ public class ManagedProducto implements Serializable {
             System.out.println(ex.getMessage() + "sssssssssssssssss");
         }
     }
+
     public void guardar() {
         String codigo = this.productoFacade.codProduc().get(0).getIdProducto();
         int n = Integer.parseInt(codigo.substring(1)) + 1;
@@ -139,8 +115,7 @@ public class ManagedProducto implements Serializable {
         this.producto.setImagen(nombreArchivo);
         this.producto.setIdCategoria(categoria);
         this.productoFacade.create(producto);
-        
-        
+
     }
 
     public void eliminar(Producto p) {
@@ -148,10 +123,9 @@ public class ManagedProducto implements Serializable {
     }
 
     public void cargarData(Producto p) {
-        
+
         this.categoria.setIdCategoria(p.getIdCategoria().getIdCategoria());
         this.producto = p;
-        
 
     }
 
@@ -159,14 +133,14 @@ public class ManagedProducto implements Serializable {
         this.producto.setIdCategoria(categoria);
         this.productoFacade.edit(producto);
         init();
-        
- 
+
     }
-    public void crearCategoria(){
-      //   String codigo = this.cateogriFacade.codCateg().get(0).getIdCategoria();
+
+    public void crearCategoria() {
+        //   String codigo = this.cateogriFacade.codCateg().get(0).getIdCategoria();
         // System.out.println(codigo+"sssssss");
         System.out.println("ssssssssssssssssssss");
-       /* int n = Integer.parseInt(codigo.substring(1)) + 1;
+        /* int n = Integer.parseInt(codigo.substring(1)) + 1;
         int aux = 5 - (n + "").length();
         String cod = "";
         if (aux > 0) {
@@ -179,22 +153,24 @@ public class ManagedProducto implements Serializable {
         this.categoria.setIdCategoria(cod);
         this.cateogriFacade.create(categoria);*/
     }
-    public Producto FindIdProduc(String id){
-        return  productoFacade.find(id);
-    }
-    public void  vaciarDato(){
-        this.producto=new Producto();
-        this.categoria=new Categoria();
+
+    public Producto FindIdProduc(String id) {
+        return productoFacade.find(id);
     }
 
-    public String tieneProducto(String codCat){
+    public void vaciarDato() {
+        this.producto = new Producto();
+        this.categoria = new Categoria();
+    }
+
+    public String tieneProducto(String codCat) {
         Producto produc;
         this.listProduc = this.productoFacade.findAll();
-        
-        for(int i=0; i<this.listProduc.size();i++){
+
+        for (int i = 0; i < this.listProduc.size(); i++) {
             produc = this.listProduc.get(i);
-            if(produc.getIdCategoria().getIdCategoria().equalsIgnoreCase(codCat)){
-                if(produc.getCantidad()>0){
+            if (produc.getIdCategoria().getIdCategoria().equalsIgnoreCase(codCat)) {
+                if (produc.getCantidad() > 0) {
                     return "verdadero";
                 }
             }
