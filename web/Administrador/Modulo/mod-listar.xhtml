@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../template/template.xhtml">
+        <ui:define name="titulo">
+            Lista de Usuario
+        </ui:define>
+        <ui:define name="table">
+            
+            <h:dataTable value="#{managedRolOpe.lisRolOpe}" var="m" >                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{m.idRolOp}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Rol"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{m.idRol.nombre}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Operacion"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{m.idOpe.nombre}"></h:outputText>
+                </h:column>
+  
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Modificar"></h:outputText>
+                    </f:facet>
+                    <h:commandButton value="Modificar" action="rolOpe-editar" actionListener="#{managedRolOpe.cargarData(m)}"></h:commandButton>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Eliminar"></h:outputText>
+                    </f:facet>
+                    <h:commandButton value="Eliminar" class="b-eliminar" actionListener="#{managedRolOpe.eliminar(m)}" ></h:commandButton>
+                </h:column>
+                
+            </h:dataTable>
+        </ui:define>
+    </ui:composition>
+</html>
+

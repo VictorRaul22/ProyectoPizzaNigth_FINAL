@@ -5,6 +5,7 @@
  */
 package EJB;
 
+import Modelo.Modulo;
 import Modelo.Operacion;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface OperacionFacadeLocal {
     List<Operacion> findRange(int[] range);
 
     int count();
+    List<Operacion>listOperacion(Modulo idModulo); 
+   
     
 }

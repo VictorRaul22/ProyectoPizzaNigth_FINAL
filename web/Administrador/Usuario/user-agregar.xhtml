@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+
+      >
+
+    <ui:composition template="../template/templateformulario.xhtml">
+        <ui:define name="bodyform">
+
+            <h:form enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Nombre de Usuario"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedUsuario.usuario.nombre}"></h:inputText>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Rol"></h:outputText>
+                    </div>
+
+                    <div class="col-75">
+                        <h:selectOneMenu value="#{managedUsuario.rol.idRol}">
+                            <f:selectItems value="#{managedRol.lisRoles}" var="r"
+                                           itemLabel="#{r.nombre}"
+                                           itemValue="#{r.idRol}"
+                                           ></f:selectItems>
+                        </h:selectOneMenu>
+                    </div>          
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Email"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedUsuario.usuario.email}"></h:inputText>
+                    </div>         
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Password"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedUsuario.usuario.password}"></h:inputText>
+                    </div>         
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Domicilio"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedUsuario.usuario.domicilio}"></h:inputText>
+                    </div>         
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="imagen"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <p:fileUpload fileUploadListener="#{managedUsuario.cargarCopiarImagen}" 
+                                      mode="advanced" auto="true" 
+                                      allowTypes="/(\.|\/)(gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)$/"
+                                      ></p:fileUpload>
+                    </div>
+                </div>
+                <h:commandButton value="Guardar" action="user-listar" actionListener="#{managedUsuario.guardar()}"></h:commandButton>
+            </h:form>
+
+
+        </ui:define> 
+    </ui:composition>
+
+
+
+
+</html>
+

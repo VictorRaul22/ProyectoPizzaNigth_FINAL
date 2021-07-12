@@ -29,5 +29,6 @@ public interface DetalleCompraFacadeLocal {
     List<DetalleCompra> findRange(int[] range);
 
     int count();
+    List<DetalleCompra>codDetalle();
     
 }

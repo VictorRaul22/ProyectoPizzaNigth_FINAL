@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../template/templateformulario.xhtml">
+        <ui:define name="bodyform">
+            <h:form>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Id Boleta"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:selectOneMenu id="seleccionCategoria" value="#{managedPedido.boleta.idBoleta}">
+                            <f:selectItems value="#{managedBoleta.listBoleta}" var="b"
+                                           itemLabel="#{b.idBoleta}"
+                                           itemValue="#{b.idBoleta}"
+                                           ></f:selectItems>           
+                        </h:selectOneMenu>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Producto"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:selectOneMenu value="#{managedPedido.producto.idProducto}">
+                            <f:selectItems value="#{managedProducto.listProduc}" var="p"
+                                           itemLabel="#{p.nombre}"
+                                           itemValue="#{p.idProducto}"
+                                           ></f:selectItems>
+                        </h:selectOneMenu>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Cantidad"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedPedido.detalleCompra.cantidad}"></h:inputText>
+                    </div>         
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Estado"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:inputText value="#{managedPedido.detalleCompra.estado}"></h:inputText>
+                    </div>         
+                </div>
+                <h:commandButton value="Guardar" action="ped-listar" actionListener="#{managedPedido.modificar()}"></h:commandButton>
+            </h:form>
+            
+        </ui:define> 
+    </ui:composition>
+</html>
+

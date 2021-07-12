@@ -20,7 +20,7 @@
                     <f:facet name="header">
                         <h:outputText value="Id rol"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{u.idRol.idRol}"></h:outputText>
+                    <h:outputText value="#{u.idRol.nombre}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -50,19 +50,19 @@
                     <f:facet name="header">
                         <h:outputText value="imagen"></h:outputText>
                     </f:facet>
-                    <h:outputText value=""></h:outputText>
+                    <img src="imagenes/#{u.fotoPerfil}" width="55" height="55"></img>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Modificar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Modificar" class="b-editar"></h:commandButton>
+                    <h:commandButton value="Modificar" action="user-editar" actionListener="#{managedUsuario.cargarData(u)}"></h:commandButton>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Eliminar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Eliminar" class="b-eliminar"></h:commandButton>
+                    <h:commandButton value="Eliminar" class="b-eliminar" actionListener="#{managedUsuario.eliminar(u)}"></h:commandButton>
                 </h:column>
                 
             </h:dataTable>

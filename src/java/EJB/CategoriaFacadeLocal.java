@@ -30,4 +30,6 @@ public interface CategoriaFacadeLocal {
 
     int count();
     
+    List<Categoria> codCateg();
+    
 }

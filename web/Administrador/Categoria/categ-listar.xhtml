@@ -27,13 +27,13 @@
                     <f:facet name="header">
                         <h:outputText value="Modificar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Modificar" class="b-editar"></h:commandButton>
+                    <h:commandButton value="Modificar" action="categ-editar" actionListener="#{managedCategoria.cargarData(a)}"></h:commandButton>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Eliminar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Eliminar" class="b-eliminar"></h:commandButton>
+                    <h:commandButton value="Eliminar" class="b-eliminar" actionListener="#{managedCategoria.elimianr(a)}"></h:commandButton>
                 </h:column>
                 
             </h:dataTable>

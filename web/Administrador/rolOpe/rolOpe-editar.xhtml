@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../template/templateformulario.xhtml">
+        <ui:define name="bodyform">
+
+            <h:form>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Roles"></h:outputText>
+                    </div>
+                    <div class="col-75">
+                        <h:selectOneMenu value="#{managedRolOpe.rol.idRol}">
+                            <f:selectItems value="#{managedRolOpe.lisRoles}" var="r"
+                                           itemLabel="#{r.nombre}"
+                                           itemValue="#{r.idRol}"
+                                           ></f:selectItems>               
+                        </h:selectOneMenu>
+                    </div>
+                              
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Modulo"></h:outputText>
+                    </div>
+
+                    <div class="col-75">
+                        <h:selectOneMenu value="#{managedRolOpe.modulo.idMod}">
+                            <f:selectItems value="#{managedRolOpe.lisModulo}" var="m"
+                                           itemLabel="#{m.nombre}"
+                                           itemValue="#{m.idMod}"
+                                           ></f:selectItems>
+                            <p:ajax event="change" listener="#{managedRolOpe.listarOperacionModulo()}"
+                                    update="cmb"></p:ajax>
+                        </h:selectOneMenu>
+                    </div>          
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <h:outputText value="Operaciones"></h:outputText>
+                    </div>
+
+                    <div class="col-75">
+                        <h:selectOneMenu id="cmb" value="#{managedRolOpe.operaciones.idOpe}" disabled="#{managedRolOpe.modulo.idMod eq null}">
+                            <f:selectItem itemDisabled="true" itemLabel="Elligue una Operacion"></f:selectItem>
+                            <f:selectItems value="#{managedRolOpe.lisOperacion}" var="o"
+                                           itemLabel="#{o.nombre}"
+                                           itemValue="#{o.idOpe}"
+                                           ></f:selectItems>
+                        </h:selectOneMenu>
+                    </div>          
+                </div>
+                <h:commandButton value="Guardar" action="rolOpe-listar" actionListener="#{managedRolOpe.modificar()}"></h:commandButton>
+            </h:form>
+        </ui:define> 
+    </ui:composition>
+</html>
+

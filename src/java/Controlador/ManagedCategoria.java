@@ -7,6 +7,7 @@ package Controlador;
 
 import EJB.CategoriaFacadeLocal;
 import Modelo.Categoria;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -17,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ManagedCategoria {
     @EJB
-    CategoriaFacadeLocal categoriaFacade;
+    private CategoriaFacadeLocal categoriaFacade;
     private List<Categoria> listaCategoria;
     private Categoria categoria;
 
@@ -42,9 +43,20 @@ public class ManagedCategoria {
         this.categoria=new Categoria();
     }
     public void  guardar(){
-        
-       categoria.setIdCategoria("C0009");
+        String codigo = this.categoriaFacade.codCateg().get(0).getIdCategoria();
+        int n = Integer.parseInt(codigo.substring(2)) + 1;
+        int aux = 5 - (n + "").length();
+        String cod;
+        if (aux > 0) {
+            char[] zero = new char[aux];
+            Arrays.fill(zero, '0');
+            cod = "CP" + String.valueOf(zero) + n;
+        } else {
+            cod = "CP" + n;
+        }
+        this.categoria.setIdCategoria(cod);
         this.categoriaFacade.create(categoria);
+
     }
     public void elimianr(Categoria c){
         this.categoriaFacade.remove(c);

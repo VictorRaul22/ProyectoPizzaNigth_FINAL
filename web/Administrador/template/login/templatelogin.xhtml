@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>After Pizza - Inicia sesión</title>
+        <link rel="StyleSheet" href="../../styles/adm-logIn-Styles.css" TYPE="text/css" MEDIA="screen"></link>
+    </h:head>
+
+    <h:body>
+        <div class="logIn">
+            <h:form>
+                <p:messages autoUpdate="true" showDetail="true"></p:messages>
+                <div class="imgcontainer">
+                    <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" 
+                         alt="Avatar"
+                         class="avatar"></img>
+                </div>
+                <div class="container">
+
+                    <label for="email"><b>Correo</b></label>
+                    <p:inputText placeholder="Ingresa tu correo" value="#{managedUsuario.usuario.email}" required="true"></p:inputText>
+                    <label for="psw"><b>Contraseña</b></label>
+                    <p:inputText type="password" placeholder="Ingresa contraseña" value="#{managedUsuario.usuario.password}" required="true"></p:inputText>
+
+                    <!--
+                    
+                    <button type="submit" name="accion" value="logueo" >Login</button>
+                    -->
+
+                    <p:commandButton value="Ingresar" type="button" action="#{managedUsuario.iniciarsesion()}"  />
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Recordar Contraseña</input>
+                    </label>
+                </div>
+                <div class="container botones"> <a href="index.jsp"><button type="button"
+                                                                            class="cancelbtn">Regresar</button></a>
+                    <a href="registrate.jsp"><button type="button" id="registrate">Registrate</button></a>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

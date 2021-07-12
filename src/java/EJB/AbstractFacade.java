@@ -5,8 +5,15 @@
  */
 package EJB;
 
+import Modelo.Categoria;
+import Modelo.DetalleCompra;
+import Modelo.Modulo;
+import Modelo.Operacion;
+import Modelo.Producto;
+import Modelo.Usuarios;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -60,5 +67,28 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+    public List<Producto> codProduc(){
+        String sql="SELECT p FROM Producto p ORDER BY p.idProducto DESC";
+       return getEntityManager().createQuery(sql).getResultList();
+    }
+    public List<Categoria> codCateg(){
+        String sql="SELECT c FROM Categoria c ORDER BY c.idCategoria DESC";
+       return getEntityManager().createQuery(sql).getResultList();
+    }
+    public List<Usuarios> codUser(){
+        String sql="SELECT u FROM Usuarios u ORDER BY u.idUser DESC";
+       return getEntityManager().createQuery(sql).getResultList();
+    }
+    public List<DetalleCompra> codDetalle(){
+        String sql="SELECT d FROM DetalleCompra d ORDER BY d.idDetalle DESC";
+       return getEntityManager().createQuery(sql).getResultList();
+    }
+    public List<Operacion> listOperacion(Modulo Modulo){
+        String sql="SELECT o FROM Operacion o WHERE o.idMod = :idMod";
+         return getEntityManager().createQuery(sql).setParameter("idMod",Modulo).getResultList();
+         
+ 
+    } 
+
     
 }

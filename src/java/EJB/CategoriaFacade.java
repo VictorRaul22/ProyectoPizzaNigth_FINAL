@@ -6,6 +6,7 @@
 package EJB;
 
 import Modelo.Categoria;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,8 @@ public class CategoriaFacade extends AbstractFacade<Categoria> implements Catego
     public CategoriaFacade() {
         super(Categoria.class);
     }
-    
+
+   
+
+
 }

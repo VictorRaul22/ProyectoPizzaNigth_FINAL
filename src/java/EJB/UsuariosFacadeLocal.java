@@ -27,7 +27,7 @@ public interface UsuariosFacadeLocal {
     List<Usuarios> findAll();
 
     List<Usuarios> findRange(int[] range);
-
-    int count();
     
+    int count();
+    List<Usuarios>codUser();
 }

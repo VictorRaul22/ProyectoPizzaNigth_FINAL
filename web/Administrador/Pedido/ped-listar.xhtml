@@ -8,17 +8,58 @@
         <ui:define name="titulo">
             Lista de Pedidos
         </ui:define>
+
         <ui:define name="table">
-            <h:dataTable value="" var="">
-  
-                
+            <h:dataTable value="#{managedPedido.listDetalle}" var="d">    
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id DetalleBoleta"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.idDetalle}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id Boleta"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.idBoleta.idBoleta}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Producto"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.idProducto.nombre}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cantidad"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.cantidad}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="PrecioSubtotal"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.precioSubTotal}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Estado"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{d.estado}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Modifcar"></h:outputText>
+                    </f:facet>
+                    <h:commandButton value="Modificar" action="ped-editar" actionListener="#{managedPedido.cargarData(d)}"> </h:commandButton>
+                </h:column>
+
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Eliminar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Eliminar" class="b-eliminar"></h:commandButton>
-                </h:column>
-                
+                    <h:commandButton value="Eliminar" class="b-eliminar" actionListener="#{managedPedido.eliminar(d)}"></h:commandButton>
+                </h:column>                
             </h:dataTable>
         </ui:define>
     </ui:composition>

@@ -26,7 +26,6 @@ body {
   max-height: 50%;
   padding: 0px 50px;
 }
-
 .navbar a {
   float: left;
   font-size: 16px;
@@ -58,7 +57,6 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #059b6400;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -76,6 +74,7 @@ body {
   display: block;
   text-align: left;
 }
+
 
 .dropdown-content a:hover {
   background-color: rgb(54, 54, 54);
@@ -102,6 +101,7 @@ body {
   text-align: left;
 }
 
+
 @media only screen and (max-width: 600px) {
   .text-nav {
     display: flex;
@@ -120,7 +120,6 @@ input[type="text"],
 [type="number"],
 [type="email"],
 [type="tel"],
-[type="file"],
 [type="button"],
 select,
 textarea {

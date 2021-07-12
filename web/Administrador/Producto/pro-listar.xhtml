@@ -18,9 +18,9 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Id Categoria"></h:outputText>
+                        <h:outputText value="Categoria"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{p.idCategoria.idCategoria}"></h:outputText>
+                    <h:outputText value="#{p.idCategoria.nombre}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -38,7 +38,7 @@
                     <f:facet name="header">
                         <h:outputText value="imagen"></h:outputText>
                     </f:facet>
-                    <h:outputText value=""></h:outputText>
+                    <img src="imagenes/#{p.imagen}" height="55" width="55"></img>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -50,7 +50,7 @@
                     <f:facet name="header">
                         <h:outputText value="Cantidad"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{p.cantidad   }"></h:outputText>
+                    <h:outputText value="#{p.cantidad}"></h:outputText>
                 </h:column>
                 
                 
@@ -58,13 +58,13 @@
                     <f:facet name="header">
                         <h:outputText value="Modificar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Modificar" class="b-editar"></h:commandButton>
+                    <h:commandButton value="Modificar" action="pro-editar" actionListener="#{managedProducto.cargarData(p)}"></h:commandButton>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Eliminar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Eliminar" class="b-eliminar"></h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{managedProducto.eliminar(p)}"></h:commandButton>
                 </h:column>
                 
             </h:dataTable>
