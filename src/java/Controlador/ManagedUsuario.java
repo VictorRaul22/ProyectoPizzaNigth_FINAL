@@ -148,11 +148,13 @@ public class ManagedUsuario implements Serializable {
     }
     public String iniciarsesion() {
         Usuarios u;
-        String redireccion ="/SINPERMISOS?faces-redirect=true";
+        String redireccion =null;
         try {
             u = usuarioFacade.iniciarsesion(usuario);
             if (u != null) {
                 redireccion="/index?faces-redirect=true";
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso", "Credenciales incorrectas"));
             }
 
         } catch (Exception e) {
