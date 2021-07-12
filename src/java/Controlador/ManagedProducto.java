@@ -118,7 +118,8 @@ public class ManagedProducto implements Serializable {
         this.producto.setImagen(nombreArchivo);
         this.producto.setIdCategoria(categoria);
         this.productoFacade.create(producto);
-    
+        
+        
     }
 
     public void eliminar(Producto p) {
@@ -126,14 +127,19 @@ public class ManagedProducto implements Serializable {
     }
 
     public void cargarData(Producto p) {
-
+        
         this.categoria.setIdCategoria(p.getIdCategoria().getIdCategoria());
         this.producto = p;
+        
+
     }
 
     public void modificar() {
         this.producto.setIdCategoria(categoria);
         this.productoFacade.edit(producto);
+        init();
+        
+ 
     }
     public void crearCategoria(){
       //   String codigo = this.cateogriFacade.codCateg().get(0).getIdCategoria();
@@ -154,6 +160,10 @@ public class ManagedProducto implements Serializable {
     }
     public Producto FindIdProduc(String id){
         return  productoFacade.find(id);
+    }
+    public void  vaciarDato(){
+        this.producto=new Producto();
+        this.categoria=new Categoria();
     }
 
 }

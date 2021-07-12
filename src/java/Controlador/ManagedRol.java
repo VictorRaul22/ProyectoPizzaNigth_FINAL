@@ -16,7 +16,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class ManagedRol{
+public class ManagedRol implements Serializable{
     @EJB
     RolesFacadeLocal rolesFacade;
     Roles roles;
@@ -54,5 +54,6 @@ public class ManagedRol{
     }
     public void modificar(){
         this.rolesFacade.edit(roles);
+        init();
     }
 }

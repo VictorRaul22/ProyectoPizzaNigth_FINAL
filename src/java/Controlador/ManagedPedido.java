@@ -12,6 +12,7 @@ import EJB.ProductoFacadeLocal;
 import Modelo.Boleta;
 import Modelo.DetalleCompra;
 import Modelo.Producto;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
@@ -20,16 +21,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIInput;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean
 @SessionScoped
-public class ManagedPedido {
+public class ManagedPedido implements Serializable{
     @EJB
-    //PedidoFacadeLocal pedidoFacade;
     private DetalleCompraFacadeLocal detalleFacabde;
     
     @EJB
@@ -71,11 +67,11 @@ public class ManagedPedido {
 
     public List<DetalleCompra> getListDetalle() {
         this.listDetalle=detalleFacabde.findAll();
-        for(int i=0;i< this.listDetalle.size();i++){
-            detalleCompra=this.listDetalle.get(i);
-            detalleCompra.setIdProducto(this.productoFacade.find(this.listDetalle.get(i).getIdProducto().getIdProducto()));
-            this.listDetalle.set(i, detalleCompra);
-        }
+//        for(int i=0;i< this.listDetalle.size();i++){
+//            detalleCompra=this.listDetalle.get(i);
+//            detalleCompra.setIdProducto(this.productoFacade.find(this.listDetalle.get(i).getIdProducto().getIdProducto()));
+//            this.listDetalle.set(i, detalleCompra);
+//        }
         return listDetalle;
     }
 
@@ -127,10 +123,11 @@ public class ManagedPedido {
         DecimalFormat df=new DecimalFormat("#.##",dfs);
         double precio= Double.parseDouble(df.format(this.productoFacade.find(producto.getIdProducto()).getPrecio()));
         this.detalleCompra.setPrecioSubTotal(Double.parseDouble(df.format(detalleCompra.getCantidad()*precio)));
-        
+
         this.detalleCompra.setIdBoleta(boleta);
         this.detalleCompra.setIdProducto(producto);
         this.detalleFacabde.edit(detalleCompra);
+        init();
     }
 
 

@@ -7,6 +7,7 @@ package Controlador;
 
 import EJB.BoletaFacadeLocal;
 import Modelo.Boleta;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -14,7 +15,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class ManagedBoleta {
+public class ManagedBoleta implements Serializable{
     @EJB
     BoletaFacadeLocal boletaFacade;
     private List<Boleta> listBoleta;

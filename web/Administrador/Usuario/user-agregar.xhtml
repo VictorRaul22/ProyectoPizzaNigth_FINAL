@@ -27,6 +27,7 @@
 
                     <div class="col-75">
                         <h:selectOneMenu value="#{managedUsuario.rol.idRol}">
+                            <f:selectItem itemDisabled="true" itemLabel="Elligue una Rol"></f:selectItem>
                             <f:selectItems value="#{managedRol.lisRoles}" var="r"
                                            itemLabel="#{r.nombre}"
                                            itemValue="#{r.idRol}"

@@ -18,6 +18,7 @@
                     </div>
                     <div class="col-75">
                         <h:selectOneMenu value="#{managedRolOpe.rol.idRol}">
+                            <f:selectItem itemDisabled="true" itemLabel="Elligue una Rol"></f:selectItem>
                             <f:selectItems value="#{managedRolOpe.lisRoles}" var="r"
                                            itemLabel="#{r.nombre}"
                                            itemValue="#{r.idRol}"
@@ -33,6 +34,7 @@
 
                     <div class="col-75">
                         <h:selectOneMenu value="#{managedRolOpe.modulo.idMod}">
+                            <f:selectItem itemDisabled="true" itemLabel="Elligue una Modulo"></f:selectItem>
                             <f:selectItems value="#{managedRolOpe.lisModulo}" var="m"
                                            itemLabel="#{m.nombre}"
                                            itemValue="#{m.idMod}"

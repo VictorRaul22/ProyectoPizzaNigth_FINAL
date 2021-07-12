@@ -64,7 +64,7 @@
                     <f:facet name="header">
                         <h:outputText value="Eliminar"></h:outputText>
                     </f:facet>
-                    <h:commandButton value="Eliminar" action="#{managedProducto.eliminar(p)}"></h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{managedProducto.eliminar(p)}" onclick="return confirm('¿Estas seguro de eliminar este elemento?')"></h:commandButton>
                 </h:column>
                 
             </h:dataTable>

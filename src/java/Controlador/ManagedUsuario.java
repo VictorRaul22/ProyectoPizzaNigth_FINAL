@@ -9,24 +9,34 @@ import EJB.RolesFacadeLocal;
 import EJB.UsuariosFacadeLocal;
 import Modelo.Roles;
 import Modelo.Usuarios;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.Arrays;
+
+import java.io.Serializable;
+
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
+
+import javax.faces.context.FacesContext;
+
 @ManagedBean
 @SessionScoped
-public class ManagedUsuario{
+public class ManagedUsuario implements Serializable {
+
+
     @EJB
     UsuariosFacadeLocal usuarioFacade;
     
@@ -57,6 +67,7 @@ public class ManagedUsuario{
     }
 
     public List<Usuarios> getListUsuario() {
+
         this.listUsuario=usuarioFacade.findAll();
         for(int i=0;i< this.listUsuario.size();i++){
             usuario=this.listUsuario.get(i);
@@ -64,17 +75,22 @@ public class ManagedUsuario{
             this.listUsuario.set(i, usuario);
         }
         
+
+        this.listUsuario = usuarioFacade.findAll();
+
         return listUsuario;
     }
 
     public void setListUsuario(List<Usuarios> listUsuario) {
         this.listUsuario = listUsuario;
     }
+
     @PostConstruct
-    public void init(){
-        this.usuario=new Usuarios();
-        this.rol=new Roles();
+    public void init() {
+        this.usuario = new Usuarios();
+        this.rol = new Roles();
     }
+
     public void cargarCopiarImagen(FileUploadEvent event) {
         byte[] bytes = new byte[1024];
         int read = 0;
@@ -111,23 +127,45 @@ public class ManagedUsuario{
         }
         System.out.println(cod);
         this.usuario.setIdUser(cod);
-        this.usuario.setIdRol(rol);
-        this.usuario.setFotoPerfil(nombreArchivo);
-        this.usuarioFacade.create(usuario);
     }
-     public void eliminar(Usuarios u){
+
+    public void eliminar(Usuarios u){
         this.usuarioFacade.remove(u);
     }
-    public void cargarData(Usuarios u){
+
+    public void cargarData(Usuarios u) {
         this.rol.setIdRol(u.getIdRol().getIdRol());
-        this.usuario=u;
+        this.usuario = u;
     }
-    public void modificar(){
+
+    public void modificar() {
         this.usuario.setIdRol(rol);
         //System.out.println("1:"+usuario.getIdRol());
        
         this.usuarioFacade.edit(usuario);
         //System.out.println("2:"+usuario.getIdRol());
+        init();
     }
-    
+    public String iniciarsesion() {
+        Usuarios u;
+        String redireccion = null;
+        try {
+            u = usuarioFacade.iniciarsesion(usuario);
+            if (u != null) {
+                if (u.getIdRol().equals("R0001")) {
+                    redireccion = "templatefooter";
+                } else {
+                    redireccion = "templatefooter";
+                }
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "Credenciales inválidas"));
+            }
+
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "AVISO", "ERROR"));
+        }
+        return redireccion;
+    }
+
+
 }

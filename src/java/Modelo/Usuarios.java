@@ -182,5 +182,5 @@ public class Usuarios implements Serializable {
     public String toString() {
         return "Modelo.Usuarios[ idUser=" + idUser + " ]";
     }
-    
+
 }

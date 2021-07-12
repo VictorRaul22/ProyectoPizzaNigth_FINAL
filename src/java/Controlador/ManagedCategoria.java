@@ -7,6 +7,7 @@ package Controlador;
 
 import EJB.CategoriaFacadeLocal;
 import Modelo.Categoria;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -16,7 +17,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class ManagedCategoria {
+public class ManagedCategoria implements Serializable{
     @EJB
     private CategoriaFacadeLocal categoriaFacade;
     private List<Categoria> listaCategoria;
@@ -67,5 +68,9 @@ public class ManagedCategoria {
     }
     public void modificar(){
         this.categoriaFacade.edit(categoria);
-    } 
+        init();
+    }
+    public void vaciarDato(){
+        this.categoria=new Categoria();
+    }
 }

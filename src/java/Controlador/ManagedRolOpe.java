@@ -15,6 +15,7 @@ import Modelo.Operacion;
 import Modelo.RolOpe;
 import Modelo.Roles;
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -24,7 +25,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 
-public class ManagedRolOpe {
+public class ManagedRolOpe implements Serializable{
 
     @EJB
     RolOpeFacadeLocal rolOpeFacade;
@@ -155,6 +156,7 @@ public class ManagedRolOpe {
         this.rolope.setIdOpe(Operaciones);
         this.rolope.setIdRol(rol);
         this.rolOpeFacade.edit(rolope);
+        init();
     }
     
     public void listarOperacionModulo(){
