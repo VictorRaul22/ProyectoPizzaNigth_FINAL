@@ -29,6 +29,12 @@ import org.primefaces.model.UploadedFile;
 @ManagedBean
 @SessionScoped
 public class ManagedProducto implements Serializable {
+    
+    /*
+    ===========================================================================
+    ================================ ATRIBUTOS ================================
+    ===========================================================================
+    */
     @EJB
     private ProductoFacadeLocal productoFacade;
     @EJB
@@ -73,12 +79,27 @@ public class ManagedProducto implements Serializable {
         this.categoria = categoria;
     }
 
+    
+    
+    /*
+    ===========================================================================
+    ================================ CONSTRUCTOR ==============================
+    ===========================================================================
+    */
     @PostConstruct
     public void init() {
         this.producto = new Producto();
         this.categoria = new Categoria();
     }
 
+    
+    
+    
+    /*
+    ===========================================================================
+    ================================= METODOS =================================
+    ===========================================================================
+    */
     public void cargarCopiarImagen(FileUploadEvent event) {
         byte[] bytes = new byte[1024];
         int read = 0;
@@ -166,4 +187,18 @@ public class ManagedProducto implements Serializable {
         this.categoria=new Categoria();
     }
 
+    public String tieneProducto(String codCat){
+        Producto produc;
+        this.listProduc = this.productoFacade.findAll();
+        
+        for(int i=0; i<this.listProduc.size();i++){
+            produc = this.listProduc.get(i);
+            if(produc.getIdCategoria().getIdCategoria().equalsIgnoreCase(codCat)){
+                if(produc.getCantidad()>0){
+                    return "verdadero";
+                }
+            }
+        }
+        return "falso";
+    }
 }
