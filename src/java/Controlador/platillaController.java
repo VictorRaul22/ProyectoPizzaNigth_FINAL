@@ -12,6 +12,8 @@ import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -73,8 +75,15 @@ public class platillaController implements Serializable{
     }
 
 
-    public void cerrarSesion(){
+    public  void cerrarSesion(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        try {
+            System.out.println("BUENAS");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(platillaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

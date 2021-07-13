@@ -47,16 +47,17 @@
                         <c:choose>
                             <c:when test="#{platillaController.usuario.idRol.idRol.equals('R001')}">
                                 <div class="nav-text3">
-                                    <h:commandLink value="Gestion Tablas"
-                                                   style="text-decoration: none; color: white;" action="Administrador/Usuario/user-listar?faces-redirect=true"></h:commandLink>
+
+                                    <h:link outcome="/Administrador/Usuario/user-listar?faces-redirect=true" value="Gestion Tablas"
+                                    style="text-decoration: none; color: white;"></h:link>
                                 </div>
                             </c:when>
                         </c:choose>
                         <c:choose>
                             <c:when test="#{platillaController.usuario!=null}">
                                 <div class="nav-text3">
-                                    <h:link value="Carrito"
-                                            style="text-decoration: none; color: white;"></h:link>
+                                    <h:link outcome="/carrito?faces-redirect=true" value="Carrito"
+                                    style="text-decoration: none; color: white;" ></h:link>
                                 </div>
                             </c:when>
                         </c:choose>
@@ -65,16 +66,17 @@
                     <c:choose>
                         <c:when test="#{platillaController.usuario==null}">
                             <div class="nav-log-in">
-                                <h:link>
-                                    <h:commandButton class="btn btn-primary" action="/login?faces_redirect=true" value="login"></h:commandButton>
-                                </h:link>
+                            
+                                    <h:commandButton class="btn btn-primary" action="/login?faces-redirect=true" value="login"></h:commandButton>
+                               
                             </div>
                         </c:when>
 
                         <c:when test="#{platillaController.usuario!=null}">
                             <div class="nav-log-in">
                                     
-                                    <h:commandButton class="btn btn-primary" action="/index?faces_redirect=true" actionListener="#{platillaController.cerrarSesion()}" value="Cerrar Sesion"></h:commandButton>
+                                    <h:commandButton class="btn btn-primary"   actionListener="#{platillaController.cerrarSesion()}" value="Cerrar Sesion">
+                                    </h:commandButton>
                                     <h:outputText value="#{platillaController.usuario.nombre}"></h:outputText>
                             </div>
                         </c:when>
