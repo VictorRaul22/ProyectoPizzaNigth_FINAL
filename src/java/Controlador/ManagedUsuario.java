@@ -152,6 +152,8 @@ public class ManagedUsuario implements Serializable {
         try {
             u = usuarioFacade.iniciarsesion(usuario);
             if (u != null) {
+                //Almacenar en la sesion de JSF
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
                 redireccion="/index?faces-redirect=true";
             }else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso", "Credenciales incorrectas"));

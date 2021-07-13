@@ -84,8 +84,6 @@ public abstract class AbstractFacade<T> {
     public List<Operacion> listOperacion(Modulo Modulo){
         String sql="SELECT o FROM Operacion o WHERE o.idMod = :idMod";
          return getEntityManager().createQuery(sql).setParameter("idMod",Modulo).getResultList();
-         
- 
     } 
 
     
