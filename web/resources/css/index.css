@@ -76,6 +76,130 @@ body {
 .nav-log-in {
     flex: 1;
 }
+
+/*
+===========================================================================
+================================ NUEVO CODIGO =============================
+===========================================================================
+*/
+.usuario a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.usuario{
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.usuario_btnIconos{
+    size: 45px;
+    width: 45px;
+    height: 45px;
+    
+    border-radius: 50%;
+    background-color: #081F46;
+    
+    padding: 0.6rem 0.3rem;
+    z-index: 10;
+    cursor: pointer;
+    
+    box-shadow: 3px 7px 7px rgba(0 0 0 / 22%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.iconoNavegacion{
+    display: block;
+    width: 60%;
+    height: 2px;
+    
+    background-color: #fff;
+    transition: transform 0.25s;
+}
+
+.usuario_btn{
+    display: none;
+}
+
+/*
+ANIMACIONES
+
+deg: Grados
+*/
+
+.usuario_btn:checked + .usuario_btnIconos .iconoNavegacion:first-child{
+    transform: translateY(8px) rotate(45deg);
+}
+
+.usuario_btn:checked + .usuario_btnIconos .iconoNavegacion:nth-of-type(2){
+    transform: scale(0);
+}
+
+.usuario_btn:checked + .usuario_btnIconos .iconoNavegacion:last-child{
+    transform: translateY(-8.6px) rotate(-45deg);
+}
+
+.usuario_Caja{
+    height: 100%;
+    width: 85px;
+    box-shadow: 0 0 20px #fff;
+    border-radius: 3px; 
+    position: absolute;
+    left: 0; /*Se posiciona del lado izquierdo hacia la derecha 0px*/
+    top: 0; /*Se posiciona desde arriba hacia abajo 0px*/ 
+    transition: transform 0.4s;
+}
+
+.usuario_btn:checked ~ .usuario_Caja{
+    transform: translateX(-175px);
+    width: 260px;
+    box-shadow: 0 0 0px;
+}
+
+.usuarioMenu{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background: #081F46;
+    color: #fff;
+    
+    padding: 2rem;
+    font-weight: 300;
+    box-shadow: 3px 7px 7px rgba(0 0 0 / 22%);
+    
+    width: 260px;
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    transform-origin: top;
+}
+
+.usuarioMenu_Label{
+    margin-bottom: 2rem;
+}
+
+.usuarioMenu_Link{
+   margin-bottom: 2rem;
+}
+
+.usuarioMenu_Link:hover{
+    background-color: #243E68;
+}
+
+.usuario_btn:checked ~ .usuarioMenu{
+    transform: scaleY(1) translateX(-175px) translateZ(15px);
+    box-shadow: 0 0 20px #fff;
+    
+}
+
 .cad-tittle {
     color: white;
     background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
@@ -228,6 +352,15 @@ select {
     
     .cad-tittle{
         max-width: 50vh;
+    }
+    
+    /*
+    ==========================================================================
+    ============================== NUEVO CODIGO ==============================
+    ==========================================================================
+    */
+    .usuario{
+        transform: translateX(80%);
     }
 }
 
